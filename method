@@ -1,0 +1,21 @@
+#--------------------------------------------------------------------------#
+# [% method_name %]()
+#--------------------------------------------------------------------------#
+
+[% IF NEED_POD -%]
+=head2 [% method_name %]
+
+ $rv = [% method_name %]();
+
+Description of [% method_name %]...
+
+=cut
+[%- END %]
+
+sub [% method_name %] {
+[% IF NEED_NEW_METHOD -%]
+    my ($self) = @_;
+[% END -%]
+
+}
+

@@ -23,3 +23,6 @@
 ^\.#
 \.swp$
 \.bak$
+
+# Git
+^\.gitignore

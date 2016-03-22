@@ -1,0 +1,5 @@
+[% PERL %]
+my $name=$stash->get('NAME');
+(my $distname=$name)=~s/::/-/g;
+$stash->set('DISTNAME', $distname);
+[% END %]

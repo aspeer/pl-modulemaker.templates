@@ -1,4 +1,4 @@
-#  
+#
 #
 package [% NAME %];
 
@@ -37,3 +37,4 @@ __END__
 
 [% NAME %] - Module Synopsis/Abstract Here
 
+=head1 LICENSE and COPYRIGHT

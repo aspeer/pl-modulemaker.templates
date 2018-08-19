@@ -31,6 +31,15 @@ my %WriteMakefile=(
             }
         }
     },
+    PM_FILTER		=> $ENV{'PM_DEBUG'} || do {
+	use IO::File;
+        my $fn='.pm_filter.pf';
+        my $fh=IO::File->new($fn, O_WRONLY|O_CREAT|O_TRUNC) ||
+            die ("unable to write filter file '$fn', $!");
+        print $fh 's/^(\s*)debug\\(/${1}0 && debug\\(/m; print';
+        $fh->close();
+        my $pm_filter="\$(PERL) -nl $fn";
+    },
     'depend'            => {
         Makefile        => '$(VERSION_FROM)',
     },
@@ -40,6 +49,7 @@ my %WriteMakefile=(
     },
 );
 my %MM_Compat=(
+    '5.46'		=> [q(PM_FILTER)],
     '6.31'              => [q(LICENSE)],
     '6.46'              => [q(META_MERGE)],
     '6.48'              => [q(MIN_PERL_VERSION)],
@@ -58,6 +68,6 @@ sub post_initialize {
     #  Add license file, other support files here
     #
     my $mm_or=shift();
-    $mm_or->{'PM'}{'LICENSE'}='$(INST_LIBDIR)/$(BASEEXT)/LICENSE';
+    $mm_or->{'PM'}{'LICENSE'}='$(INST_LIBDIR)/$(BASEEXT)/LICENSE' if -e 'LICENSE';
     $mm_or->SUPER::post_initialize;
 };

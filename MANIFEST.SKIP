@@ -26,3 +26,6 @@
 
 # Git
 ^\.gitignore
+
+# PM Filter
+.pm_filter.pf

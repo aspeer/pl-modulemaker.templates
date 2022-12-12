@@ -1,4 +1,3 @@
-[% PROCESS Makefile.local -%]
 use 5.006;
 use strict;
 use ExtUtils::MakeMaker;
@@ -8,10 +7,10 @@ if ($mm_ver =~ /_/) { # dev version
     die $@ if $@;
 }
 my %WriteMakefile=(
-    NAME                => '[% NAME %]',
+    NAME                => '[% build_name %]',
     VERSION_FROM        => '[% FILE %]',
     ABSTRACT_FROM       => '[% FILE %]',,
-    EXE_FILES           => ['bin/[% bin %]'],
+    EXE_FILES           => do { my [% exe_files %] },
     LICENSE             => '[% LICENSE %]',
     AUTHOR              => '[%  AUTHOR %] <[%  EMAIL %]>',
     MIN_PERL_VERSION	=> '5.006',
@@ -23,11 +22,11 @@ my %WriteMakefile=(
             version     => 2
         },
         resources       => {
-            homepage    => 'https://github.com/aspeer/[% DISTNAME %]',
+            homepage    => '[% WEBSITE %]/[% repo_name %]',
             repository  => {
                 type    => 'git',
-                url     => 'https://github.com/aspeer/[% DISTNAME %].git',
-                web     => 'https://github.com/aspeer/[% DISTNAME %]'
+                url     => '[% WEBSITE %]/[% repo_name %].git',
+                web     => '[% WEBSITE %]/[% repo_name %]'
             }
         }
     },

@@ -10,7 +10,6 @@
 #  <[% LICENSE_URL %]>
 #
 
-
 #  Compiler pragma
 #
 use strict;

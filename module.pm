@@ -1,4 +1,14 @@
 #
+#  This file is part of [% NAME %]
+#
+[% LICENSE_NOTICE_COMMENT %]
+#
+#  Full license text is available at:
+#
+#  <[% LICENSE_URL %]>
+#
+
+#
 #
 package [% NAME %];
 

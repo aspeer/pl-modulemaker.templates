@@ -39,7 +39,7 @@ use base 'Exporter';
 #  Version information in a format suitable for CPAN etc. Must be
 #  all on one line
 #
-$VERSION='0.001';
+$VERSION='[% VERSION %]';
 
 
 #  Debugging on ?
@@ -84,7 +84,7 @@ sub fmt {
     chomp($message);
     my $caller=(caller(2))[3] || 'main';
     $caller=~s/^_?!(_)//;
-    my $format='@<<<<<<<<<<<<<<<<<<<<<< @<';
+    my $format='@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< @<';
     local $^A='';
     formline $format, "[${caller}]", '';
     $message=$^A . $message; $^A=undef;

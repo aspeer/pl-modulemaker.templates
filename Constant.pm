@@ -24,7 +24,7 @@ use vars qw($VERSION @ISA %EXPORT_TAGS @EXPORT_OK @EXPORT %Constant);
 
 #  Version information
 #
-$VERSION='0.012';
+$VERSION='[% VERSION %]';
 
 
 #  Get module file name and path, derive name of file to store local constants
@@ -37,6 +37,7 @@ my $local_fn=abs_path(__FILE__) . '.local';
 #  <<<
 %Constant=(
 
+
     #  Local constants override anything above
     #
     %{do($local_fn) || {}},
@@ -44,6 +45,7 @@ my $local_fn=abs_path(__FILE__) . '.local';
 
 );
 # >>>
+
 
 #  Export constants to namespace, place in export tags
 #
@@ -54,4 +56,3 @@ foreach (keys %Constant) {${$_}=$Constant{$_}}
 @EXPORT_OK=@EXPORT;
 %EXPORT_TAGS=(all => [@EXPORT_OK]);
 $_=\%Constant;
-

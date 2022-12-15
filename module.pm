@@ -8,13 +8,16 @@ package [% NAME %];
 use strict qw(vars);
 use vars qw($VERSION);
 use warnings;
-no warnings qw(uninitialized);
-sub BEGIN {local $^W=0}
+
+
+#  Support modules
+#
+use [% NAME %]::Util qw(msg debug err);
+use [% NAME %]::Constant;
 
 
 #  External modules
 #
-use [% NAME %]::Constant;
 
 
 #  Version information in a format suitable for CPAN etc. Must be
@@ -29,6 +32,18 @@ $VERSION='[% VERSION %]';
 
 
 #===================================================================================================
+
+
+sub new {
+    
+    
+    #  Create self ref
+    #
+    my ($class, $opt_hr)=shift();
+    $opt_hr ||= \1;
+    return bless({}, $class);
+
+}
 
 
 __END__

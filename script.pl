@@ -25,11 +25,8 @@ use [% NAME %]::Opt qw(getopt);
 use [% NAME %]::Constant;
 
 
-#  Other external modules
+#  Other External modules
 #
-#use Pod::Usage;
-#use FindBin qw($RealBin $Script);
-#use Getopt::Long qw(GetOptionsFromArray :config auto_version auto_help);
 
 
 #  Constantas
@@ -119,11 +116,12 @@ __END__
 
 script usage here
 ```
+[% script %] --option argument
 ```
   
 # AUTHOR
 
-[% AUTHOR %] <[% EMAIL %]>
+[% AUTHOR %] [% EMAIL %]
 
 # LICENSE and COPYRIGHT
 
@@ -133,7 +131,55 @@ This file is part of [% NAME %]
 
 Full license text is available at:
 
-<[% LICENSE_URL %]>
+[% LICENSE_URL %]
 
 =end markdown
 
+=head1 NAME
+
+[% script %] - script short description
+
+
+=head1 SYNOPSIS
+
+C<<< [% script %] [--option] <arguments> >>>
+
+
+=head1 DESCRIPTION
+
+[% script %] script long description
+
+
+=head1 OPTIONS
+
+B<--help> show help synopsis
+
+B<--man> show man page
+
+B<--version> show version information
+
+
+=head1 USAGE
+
+script usage here
+ 
+ [% script %] --option argument
+
+
+
+=head1 AUTHOR
+
+[% AUTHOR %] [% EMAIL %]
+
+
+=head1 LICENSE and COPYRIGHT
+
+This file is part of [% NAME %]
+
+[% LICENSE_NOTICE %]
+
+Full license text is available at:
+
+[% LICENSE_URL %]
+
+=cut

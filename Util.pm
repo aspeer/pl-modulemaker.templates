@@ -67,7 +67,7 @@ sub err {
 
     #  Quit on errors
     #
-    my $msg=&fmt('error: %s', @_);
+    my $msg=&fmt('error: %s', @_ ? @_ : 'unknown error');
     CORE::print STDERR $msg, "\n";
     eval {require Carp; 1};
     Carp::croak;

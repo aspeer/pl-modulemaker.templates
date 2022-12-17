@@ -49,9 +49,9 @@ sub new {
     
     #  Create self ref
     #
-    my ($class, $opt_hr)=shift();
+    my ($class, $opt_hr)=@_;
     $opt_hr ||= \1;
-    return bless({}, $class);
+    return bless($opt_hr, $class);
 
 }
 
@@ -83,7 +83,7 @@ module usage here
   
 # AUTHOR
 
-[% AUTHOR %] <[% EMAIL %]>
+[% AUTHOR %] [% EMAIL %]
 
 # LICENSE and COPYRIGHT
 
@@ -93,6 +93,47 @@ This file is part of [% NAME %]
 
 Full license text is available at:
 
-<[% LICENSE_URL %]>
+[% LICENSE_URL %]
 
 =end markdown
+
+=head1 NAME
+
+[% NAME %] - script short description
+
+
+=head1 SYNOPSIS
+
+module synopsis
+ 
+
+
+
+=head1 DESCRIPTION
+
+[% NAME %] script long description
+
+
+=head1 USAGE
+
+module usage here
+ 
+
+
+
+=head1 AUTHOR
+
+[% AUTHOR %] [% EMAIL %]
+
+
+=head1 LICENSE and COPYRIGHT
+
+This file is part of [% NAME %]
+
+[% LICENSE_NOTICE %]
+
+Full license text is available at:
+
+[% LICENSE_URL %]
+
+=cut

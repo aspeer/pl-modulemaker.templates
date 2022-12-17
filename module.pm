@@ -58,8 +58,41 @@ sub new {
 
 __END__
 
-=head1 NAME
 
-[% NAME %] - Module Synopsis/Abstract Here
+=begin markdown
 
-=head1 LICENSE and COPYRIGHT
+# NAME
+
+[% NAME %] - script short description
+
+# SYNOPSIS
+
+module synopsis
+```
+```
+
+# DESCRIPTION
+
+[% NAME %] script long description
+
+# USAGE
+
+module usage here
+```
+```
+  
+# AUTHOR
+
+[% AUTHOR %] <[% EMAIL %]>
+
+# LICENSE and COPYRIGHT
+
+This file is part of [% NAME %]
+
+[% LICENSE_NOTICE %]
+
+Full license text is available at:
+
+<[% LICENSE_URL %]>
+
+=end markdown

@@ -9,8 +9,10 @@ if ($mm_ver =~ /_/) { # dev version
 my %WriteMakefile=(
     NAME                => '[% build_name %]',
     VERSION_FROM        => '[% FILE %]',
-    ABSTRACT_FROM       => '[% FILE %]',,
-    EXE_FILES           => do { my [% exe_files %] },
+    ABSTRACT_FROM       => '[% FILE %]',
+    EXE_FILES           => do { 
+        my [% exe_files %] 
+    },
     LICENSE             => '[% LICENSE %]',
     AUTHOR              => '[%  AUTHOR %] <[%  EMAIL %]>',
     MIN_PERL_VERSION	=> '5.006',

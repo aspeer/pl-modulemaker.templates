@@ -98,7 +98,7 @@ __END__
 
 # NAME
 
-[% script %] - script short description
+[% build_name %] - script short description
 
 # SYNOPSIS
 

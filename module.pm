@@ -22,7 +22,7 @@ use warnings;
 
 #  Support modules
 #
-use [% NAME %]::Util qw(msg debug err);
+use [% NAME %]::Util qw(msg debug err Dumper);
 use [% NAME %]::Constant;
 
 
@@ -39,8 +39,6 @@ $VERSION='[% VERSION %]';
 #  All done, init finished
 #
 1;
-
-
 #===================================================================================================
 
 
@@ -51,6 +49,7 @@ sub new {
     #
     my ($class, $opt_hr)=@_;
     $opt_hr ||= \1;
+    debug('initiating %s', Dumper($opt_hr));
     return bless($opt_hr, $class);
 
 }
@@ -58,12 +57,15 @@ sub new {
 
 __END__
 
+# Documentation in Markdown. Convert to POD using markpod from 
+#
+# https://github.com/aspeer/pl-markpod.git 
 
 =begin markdown
 
 # NAME
 
-[% NAME %] - script short description
+[% NAME %] - module short description
 
 # SYNOPSIS
 
@@ -97,43 +99,3 @@ Full license text is available at:
 
 =end markdown
 
-=head1 NAME
-
-[% NAME %] - script short description
-
-
-=head1 SYNOPSIS
-
-module synopsis
- 
-
-
-
-=head1 DESCRIPTION
-
-[% NAME %] script long description
-
-
-=head1 USAGE
-
-module usage here
- 
-
-
-
-=head1 AUTHOR
-
-[% AUTHOR %] [% EMAIL %]
-
-
-=head1 LICENSE and COPYRIGHT
-
-This file is part of [% NAME %]
-
-[% LICENSE_NOTICE %]
-
-Full license text is available at:
-
-[% LICENSE_URL %]
-
-=cut

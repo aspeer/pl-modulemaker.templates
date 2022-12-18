@@ -17,7 +17,7 @@ use vars qw($VERSION);
 use warnings;
 
 
-#  Base External modules
+#  Script support modules
 #
 use [% NAME %];
 use [% NAME %]::Util qw(msg err debug Dumper);
@@ -76,6 +76,7 @@ sub main {    #no subsort
 
     #  Do something
     #
+    debug('running');
 
 
     #  Done
@@ -89,6 +90,9 @@ sub main {    #no subsort
 1;
 __END__
 
+# Documentation in Markdown. Convert to POD using markpod from 
+#
+# https://github.com/aspeer/pl-markpod.git 
 
 =begin markdown
 
@@ -134,52 +138,3 @@ Full license text is available at:
 [% LICENSE_URL %]
 
 =end markdown
-
-=head1 NAME
-
-[% script %] - script short description
-
-
-=head1 SYNOPSIS
-
-C<<< [% script %] [--option] <arguments> >>>
-
-
-=head1 DESCRIPTION
-
-[% script %] script long description
-
-
-=head1 OPTIONS
-
-B<--help> show help synopsis
-
-B<--man> show man page
-
-B<--version> show version information
-
-
-=head1 USAGE
-
-script usage here
- 
- [% script %] --option argument
-
-
-
-=head1 AUTHOR
-
-[% AUTHOR %] [% EMAIL %]
-
-
-=head1 LICENSE and COPYRIGHT
-
-This file is part of [% NAME %]
-
-[% LICENSE_NOTICE %]
-
-Full license text is available at:
-
-[% LICENSE_URL %]
-
-=cut

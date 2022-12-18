@@ -47,10 +47,9 @@ $Script=~s/\.pl$//;
 ($Carp::Verbose=++$DEBUG) if $ENV{uc("${Script}_DEBUG")};
 
 
-#  Done
+#  All done, init finished
 #
 1;
-
 #==================================================================================================
 
 
@@ -58,6 +57,10 @@ sub debug {
 
     #  Debug
     #
+    { 
+        no strict qw(refs);
+        $DEBUG ||= (${"${Script}::DEBUG"} ||=0);
+    }
     goto &msg if $DEBUG;
 
 }
@@ -99,3 +102,6 @@ sub msg {
     return CORE::print &fmt(@_), "\n";
 
 }
+
+
+__END__

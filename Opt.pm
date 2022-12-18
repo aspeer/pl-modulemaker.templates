@@ -13,7 +13,7 @@
 package [% NAME %];
 
 
-#  Compiler pragma
+#  Pragma
 #
 use strict;
 use vars qw($VERSION @EXPORT_OK);
@@ -42,7 +42,7 @@ use constant {
     #
     OPTION_AR => [
 
-        qw(man verbose quiet dump_opt),
+        qw(man verbose quiet debug dump_opt),
     ],
 
 
@@ -65,8 +65,17 @@ use base 'Exporter';
 $VERSION='[% VERSION %]';
 
 
+#  All done, init finished
+#
+1;
 #===================================================================================================
 
+
+#  Note early debugging here only available by setting environment variable <script>_DEBUG=1 as
+#  debug option not read until all options processed
+#
+
+#===================================================================================================
 
 sub getopt {
 
@@ -76,9 +85,20 @@ sub getopt {
     my ($opt_ar, $opt_default_hr)=@_;
     
     
-    #  Update defaults from local home directory
+    #  Update defaults from local home directory if file present
     #
-    my %opt_defaults=(%{$opt_default_hr}, %{do(glob("~/.${Script}.option")) || {}} );
+    my %opt_defaults=%{$opt_default_hr};
+    if (-f (my $opt_defaults_fn=glob("~/.${Script}.option"))) {
+        debug("opt defaults file found: $opt_defaults_fn");
+        my $hr=eval { do($opt_defaults_fn) } ||
+            return err("error reading options file $opt_defaults_fn, check syntax");
+        debug('opt defaults file: %s', Dumper($hr));
+        %opt_defaults=(%opt_defaults, %{$hr});
+    }
+    else {
+        debug("opt defaults file not found: $opt_defaults_fn");
+    }
+    debug('opt defaults final: %s', Dumper(\%opt_defaults));
 
 
     #  Base options will pass to compile. Get option defauts from ENV or Constant/options file
@@ -90,6 +110,7 @@ sub getopt {
         } keys %opt_defaults
 
     );
+    debug('stage 1 opt: %s', Dumper(\%opt));
 
 
     #  Routine to capture files/names/other actions to process into array
@@ -104,12 +125,7 @@ sub getopt {
     #
     my @opt=(@{+OPTION_AR}, @{$opt_ar}, '<>' => $arg_cr);
     #  Removed \\ '' => \${opt {'stdin'} \\ input.
-
-
-
-    #die Dumper(\@opt);
-
-    debug('opt stage 1: %s', Dumper(\%opt));
+    debug('option array: %s', Dumper(\@opt));
 
 
     #  Now import command line options.
@@ -125,6 +141,17 @@ sub getopt {
     elsif ($opt{'version'}) {
         print "$Script version: $VERSION\n";
     };
+    
+    
+    #  Dump options if required, set debugging
+    #
+    {
+        no strict qw(refs);
+        (my $script=$Script)=~s/\.pl$//;
+        ${"${script}::DEBUG"}++ if $opt{'debug'};
+    }
+    debug('stage 2 opt: %s', Dumper(\%opt));
+    die Dumper(\%opt) if $opt{'dump_opt'};
 
 
     #  Done
@@ -133,5 +160,4 @@ sub getopt {
 
 }
 
-1;
-
+__END__

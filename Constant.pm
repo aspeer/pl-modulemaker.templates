@@ -8,12 +8,16 @@
 #  <[% LICENSE_URL %]>
 #
 
-#  Pragma
+#
 #
 package [% NAME %];
+
+
+#  Pragma
+#
 use strict qw(vars);
-use warnings;
 use vars qw($VERSION @ISA %EXPORT_TAGS @EXPORT_OK @EXPORT %Constant);
+use warnings;
 
 
 #  Version information
@@ -30,6 +34,11 @@ my $local_fn=abs_path(__FILE__) . '.local';
 #  Hash of constants
 #  <<<
 %Constant=(
+
+    
+    #  Format
+    #
+    #CONSTANT_NAME	=> 'Value',
 
 
     #  Local constants override anything above
@@ -49,4 +58,9 @@ foreach (keys %Constant) {${$_}=$Constant{$_}}
 @EXPORT=map {'$' . $_} keys %Constant;
 @EXPORT_OK=@EXPORT;
 %EXPORT_TAGS=(all => [@EXPORT_OK]);
-$_=\%Constant;
+
+
+#  All done, init finished
+#
+1;
+#===================================================================================================

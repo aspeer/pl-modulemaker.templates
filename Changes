@@ -1,4 +1,4 @@
 Revision history for Perl module [%  NAME %]
 
 [%  VERSION %] [% timestamp %]
-    - original skeleton created with ExtUtils::ModuleMaker::TT
+    - original skeleton created with ExtUtils::ModuleMaker::ASPEER

@@ -3,8 +3,8 @@
 The latest version of this software is always available from Github
 
 ```
-git clone [% NAME %]
-cd [% NAME %]
+git clone [% WEBSITE %]/[% repo_name %].git
+cd [% repo_name %]
 ```
 
 If on a modern system:
@@ -24,4 +24,4 @@ make test
 make install
 ```
 
-If installing manually dependecies will have to installed individually.
+If installing manually dependecies will have to be installed individually.

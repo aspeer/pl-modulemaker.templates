@@ -1,5 +1,5 @@
 #
-#  This file is part of [% NAME %]
+#  This file is part of [% build_name %].
 #
 [% LICENSE_NOTICE_COMMENT %]
 #
@@ -89,7 +89,7 @@ module usage here
 
 # LICENSE and COPYRIGHT
 
-This file is part of [% NAME %]
+This file is part of [% build_name %].
 
 [% LICENSE_NOTICE %]
 

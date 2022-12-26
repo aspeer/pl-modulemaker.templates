@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 #
-#  This file is part of [% NAME %]
+#  This file is part of [% build_name %].
 #
 [% LICENSE_NOTICE_COMMENT %]
 #
@@ -125,16 +125,16 @@ script usage here
   
 # AUTHOR
 
-[% AUTHOR %] [% EMAIL %]
+[% AUTHOR %] <[% EMAIL %]>
 
 # LICENSE and COPYRIGHT
 
-This file is part of [% NAME %]
+This file is part of [% build_name %].
 
 [% LICENSE_NOTICE %]
 
 Full license text is available at:
 
-[% LICENSE_URL %]
+<[% LICENSE_URL %]>
 
 =end markdown

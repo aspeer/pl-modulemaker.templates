@@ -1,5 +1,5 @@
 #
-#  This file is part of [% build_name %]
+#  This file is part of [% build_name %].
 #
 [% LICENSE_NOTICE_COMMENT %]
 #

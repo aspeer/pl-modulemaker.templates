@@ -16,7 +16,7 @@ package [% NAME %];
 #  Pragma
 #
 use strict;
-use vars qw($VERSION $DEBUG @EXPORT);
+use vars qw($VERSION $DEBUG @EXPORT_OK);
 use warnings;
 
 
@@ -32,7 +32,7 @@ $Data::Dumper::Terse=1;
 #  Export functions
 #
 use base 'Exporter';
-@EXPORT=qw(err msg arg debug Dumper);
+@EXPORT_OK=qw(err msg arg debug script realbin Dumper);
 
 
 #  Version information in a format suitable for CPAN etc. Must be
@@ -86,11 +86,8 @@ sub fmt {
     chomp($message);
     my $caller=(caller(2))[3] || 'main';
     $caller=~s/^_?!(_)//;
-    my $format='@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< @<';
-    local $^A='';
-    formline $format, "[${caller}]", '';
-    $message=$^A . $message; $^A=undef;
-    return $message;
+    $caller=~s/.*:://;
+    return "[${caller}] $message";
 
 }
 
@@ -101,6 +98,16 @@ sub msg {
     #
     return CORE::print &fmt(@_), "\n";
 
+}
+
+
+sub script {
+    $Script
+}
+
+
+sub realbin {
+    $RealBin
 }
 
 

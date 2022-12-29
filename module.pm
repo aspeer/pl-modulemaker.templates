@@ -47,10 +47,9 @@ sub new {
     
     #  Create self ref
     #
-    my ($class, $opt_hr)=@_;
-    $opt_hr ||= \1;
-    debug('initiating %s', Dumper($opt_hr));
-    return bless($opt_hr, $class);
+    my ($class, $param)=@_;
+    debug('initiating %s', Dumper($param));
+    return bless(ref($param)?$param:\$param, $class);
 
 }
 

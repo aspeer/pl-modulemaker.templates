@@ -1,9 +1,8 @@
 # [%  NAME %] - check module loading and create testing directory
 
-use Test::More tests => [% IF NEED_NEW_METHOD %] 2 [% ELSE %] 1 [% END %];
+use Test::More tests => 3;
 
-BEGIN { use_ok( '[%  NAME %]' ); }
-[% IF NEED_NEW_METHOD %]
+BEGIN { use_ok( '[%  NAME %]' ) }
+require_ok('[%  NAME %]');
 my $object = [%  NAME %]->new ();
 isa_ok ($object, '[%  NAME %]');
-[%- END %]

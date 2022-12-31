@@ -30,7 +30,7 @@ use [% BASE_NAME %]::Constant;
 #
 use Pod::Usage;
 use FindBin qw($RealBin $Script);
-use Getopt::Long qw(GetOptions :config auto_version auto_help);
+use Getopt::Long qw(GetOptions :config auto_help);
 
 
 #  Constantas
@@ -42,7 +42,7 @@ use constant {
     #
     OPTION_AR => [
 
-        qw(man verbose quiet debug dump_opt),
+        qw(man verbose version|V quiet debug dump_opt),
     ],
 
 
@@ -139,7 +139,7 @@ sub getopt {
         pod2usage( -exitstatus=>0, -verbose => 2 ) if $opt{'man'};
     }
     elsif ($opt{'version'}) {
-        print "$Script version: $VERSION\n";
+        exit print "$Script version: $VERSION\n";
     };
     
     

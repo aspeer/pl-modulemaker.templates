@@ -28,4 +28,7 @@
 ^\.gitignore
 
 # PM Filter
-^\.pm_filter.pf
+^\.pm_filter\.pf
+
+# Modulemaker
+^\.modulemaker_aspeer

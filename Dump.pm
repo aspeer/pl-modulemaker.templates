@@ -23,12 +23,11 @@ use warnings;
 #  Support modules
 #
 use [% BASE_NAME %]::Util qw(err debug script Dumper);
-use [% BASE_NAME %]::Constant;
 
 
 #  External modules
 #
-use Cwd;
+use Cwd qw(cwd);
 use File::Spec;
 use IO::File;
 use Fcntl qw(:flock);
@@ -57,7 +56,6 @@ sub dump_load {
 
     #  Load Dumper file from disk
     #
-    #my ($self, $fn)=@_;
     my $fn=shift();
     $fn=&dump_fn($fn);
     debug("loading data from: $fn");
@@ -75,7 +73,6 @@ sub dump_save {
 
     #  Save Dumper file to disk
     #
-    #my ($self, $hr, $fn)=@_;
     my ($hr, $fn)=@_;
 
 

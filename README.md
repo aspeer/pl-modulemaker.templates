@@ -1,35 +1,10 @@
-# NAME
+# Templates for ExtUtils::ModuleMaker::ASPEER
 
-[% NAME %] - [% ABSTRACT %]
+These templates are for use with ExtUtils::ModuleMaker::ASPEER, which generates skeleton Perl modules
+or scripts. To use them clone to a directory and reference via the -t command line option.
 
-# SYNOPSIS
+`git clone https://github.com/aspeer/pl-modulemaker.templates.git ~/my.templates`
 
-Synopsis goes here
+Then (from ExtUtils::ModuleMaker::ASPEER):
 
-# DESCRIPTION
-
-Description goes here
-
-# OPTIONS
-
-**--option|o** Option one
-
-**--option|o** Option two
-
-**--help** show help synopsis
-
-**--man** show man page
-
-**--version** show version information
-
-# USAGE
-
-Usage goes here
-
-# AUTHOR
-
-[% AUTHOR %] <[% EMAIL %]>
-
-# LICENSE and COPYRIGHT
-
-License goes here
+`modulemaker_aspeer.pl -n App::Foobar -a  -s foobar.pl -t ~/my.templates`
